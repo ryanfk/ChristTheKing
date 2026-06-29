@@ -255,8 +255,9 @@ img{ max-width:100%; display:block; }
 .infolist small{ display:block; font-size:.82rem; color:var(--ink-soft); font-weight:300; }
 .river__map{
   border:1px solid var(--line); border-radius:4px; overflow:hidden;
-  background:#e9ead9; min-height:170px; position:relative;
+  background:#e9ead9; position:relative;
 }
+.river__map iframe{ width:100%; height:200px; border:0; display:block; }
 
 /* =========================================================
    FOOTER
@@ -1074,23 +1075,18 @@ img{ max-width:100%; display:block; }
       </li>
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4 v9 M17 4 v9 M5 13 h14 M9 13 v7 M15 13 v7"/></svg>
-        <span><b>Chairs provided</b><small>or bring your own.</small></span>
+        <span><b>Some seating provided</b><small>A limited number of chairs are available &mdash; you&rsquo;re warmly welcome to bring a lawn chair or blanket of your own.</small></span>
       </li>
     </ul>
 
-    <!-- MAP: replace this block with an <iframe> Google Maps embed for 249 Ohio St, Buffalo NY 14204 -->
-    <div class="river__map" aria-label="Map to Tewksbury Lodge">
-      <svg viewBox="0 0 400 180" style="width:100%; height:170px; display:block;">
-        <rect width="400" height="180" fill="#e9ead9"/>
-        <path d="M0 40 h400 M0 95 h400 M0 140 h400" stroke="#d7d8c2" stroke-width="2"/>
-        <path d="M70 0 v180 M180 0 v180 M300 0 v180" stroke="#d7d8c2" stroke-width="2"/>
-        <path d="M250 0 C230 50 280 90 250 130 C230 160 270 180 260 180" fill="none" stroke="#9fb6bd" stroke-width="14" opacity=".8"/>
-        <text x="300" y="58" font-family="Inter, sans-serif" font-size="9" fill="#5b6358" letter-spacing="1">TEWKSBURY</text>
-        <text x="300" y="70" font-family="Inter, sans-serif" font-size="9" fill="#5b6358" letter-spacing="1">LODGE</text>
-        <text x="206" y="120" font-family="Inter, sans-serif" font-size="8" fill="#7d8aa0" letter-spacing="1" transform="rotate(78 206 120)">BUFFALO RIVER</text>
-        <path d="M285 70 c-4 -6 -12 -6 -12 2 c0 6 12 12 12 12 s12 -6 12 -12 c0 -8 -8 -8 -12 -2 Z" fill="#B08A47"/>
-        <circle cx="285" cy="72" r="2.4" fill="#fbfaf6"/>
-      </svg>
+    <!-- Real Google Maps embed (keyless q/output=embed form). To re-center, change the q= address. -->
+    <div class="river__map">
+      <iframe
+        title="Map to Tewksbury Lodge at Buffalo RiverFest Park"
+        src="https://maps.google.com/maps?q=Buffalo%20RiverFest%20Park%2C%20249%20Ohio%20St%2C%20Buffalo%2C%20NY%2014204&z=15&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
     </div>
   </div>
 </section>
