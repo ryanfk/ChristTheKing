@@ -215,6 +215,11 @@ img{ max-width:100%; display:block; }
 .events::-webkit-scrollbar-thumb{ background:var(--line); border-radius:3px; }
 .events::-webkit-scrollbar-thumb:hover{ background:var(--gold); }
 .events-empty{ text-align:center; color:var(--ink-soft); font-size:.95rem; padding:34px 0 6px; }
+.events-wrap{ position:relative; }
+.events-wrap::after{ content:""; position:absolute; top:0; right:0; bottom:0; width:72px; background:linear-gradient(to right, rgba(242,239,231,0), var(--paper)); pointer-events:none; opacity:0; transition:opacity .3s; }
+.events-wrap.show-fade::after{ opacity:1; }
+.events-hint{ text-align:right; font-family:var(--sans); font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin:12px 2px 0; }
+.events-hint[hidden]{ display:none; }
 .event{
   flex:0 0 196px; text-align:center; padding:30px 22px 34px;
   border-right:1px solid var(--line); scroll-snap-align:start;
@@ -727,6 +732,7 @@ img{ max-width:100%; display:block; }
 
     <!-- River Mass schedule. To update: add/edit an <article> with a data-date="YYYY-MM-DD".
          Past dates auto-hide; the first visible card is always the next Mass after today. -->
+    <div class="events-wrap" id="events-wrap">
     <div class="events" id="events-scroll">
       <article class="event" data-date="2026-07-05">
         <p class="event__month">July</p>
@@ -801,12 +807,15 @@ img{ max-width:100%; display:block; }
         <p class="event__note">Buffalo RiverFest Park</p>
       </article>
     </div>
+    </div>
+    <p class="events-hint" id="events-hint" hidden>Scroll for more &rarr;</p>
     <p id="events-empty" class="events-empty" hidden>The summer River Mass season has concluded &mdash; check back in the spring for next year&rsquo;s schedule.</p>
 
     <script>
       (function () {
         var today = new Date(); today.setHours(0, 0, 0, 0);
-        var cards = document.querySelectorAll('#events-scroll .event');
+        var scroller = document.getElementById('events-scroll');
+        var cards = scroller ? scroller.querySelectorAll('.event') : [];
         var hasUpcoming = false;
         cards.forEach(function (card) {
           var d = card.getAttribute('data-date');
@@ -816,8 +825,24 @@ img{ max-width:100%; display:block; }
         });
         var empty = document.getElementById('events-empty');
         if (empty) empty.hidden = hasUpcoming;
-        var scroller = document.getElementById('events-scroll');
         if (scroller) scroller.scrollLeft = 0;
+
+        // Scroll affordance: show fade + hint only when the row overflows and isn't at the end.
+        var wrap = document.getElementById('events-wrap');
+        var hint = document.getElementById('events-hint');
+        function updateHint() {
+          if (!scroller || !wrap) return;
+          var overflow = scroller.scrollWidth - scroller.clientWidth > 4;
+          var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
+          var show = overflow && !atEnd;
+          wrap.classList.toggle('show-fade', show);
+          if (hint) hint.hidden = !show;
+        }
+        if (scroller) {
+          scroller.addEventListener('scroll', updateHint, { passive: true });
+          window.addEventListener('resize', updateHint);
+          updateHint();
+        }
       })();
     </script>
   </div>
