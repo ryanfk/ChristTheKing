@@ -103,6 +103,12 @@ img{ max-width:100%; display:block; }
     radial-gradient(100% 80% at 80% 10%, rgba(176,138,71,.34), transparent 60%),
     linear-gradient(170deg, #5d6a4c 0%, #47604f 45%, #5f7479 78%, #7b878a 100%);
 }
+/* warm chapel stone + candlelight gradient */
+.ph-chapel{
+  background:
+    radial-gradient(85% 75% at 60% 22%, rgba(176,138,71,.36), transparent 60%),
+    linear-gradient(155deg, #2e2a20 0%, #574a35 45%, #8a7553 80%, #a89072 100%);
+}
 
 /* =========================================================
    ENGRAVED ICONS — single weight, no fill, hand-cut feel
@@ -1238,6 +1244,43 @@ img{ max-width:100%; display:block; }
         referrerpolicy="no-referrer-when-downgrade"
         allowfullscreen></iframe>
     </div>
+  </div>
+</section>
+
+<!-- ============ CHAPEL MASS (mirrored: info left, photo right) ============ -->
+<section class="river" id="chapel">
+  <div class="river__panel">
+    <h2 style="margin-bottom:28px;">Chapel Mass</h2>
+
+    <ul class="infolist">
+      <li>
+        <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22 C7 16 5 12 5 9 a7 7 0 0 1 14 0 c0 3 -2 7 -7 13 Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <span><b>Christ the King Chapel</b><small>2001 Main Street, Buffalo, NY 14208<br/>On the Canisius University campus.</small></span>
+      </li>
+      <li>
+        <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l4 2"/></svg>
+        <span><b>Sundays at 7:00 PM</b><small>Evening Mass in the chapel.</small></span>
+      </li>
+      <li>
+        <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/><path d="M3 19 a5 5 0 0 1 10 0 M12 19 a5 5 0 0 1 9 -3"/></svg>
+        <span><b>All are welcome!</b><small>Students, families, and neighbors.</small></span>
+      </li>
+    </ul>
+
+    <!-- MAP: Google Maps Embed API (place mode). To recenter, change the q= address. -->
+    <div class="river__map">
+      <iframe
+        title="Map of Christ the King Chapel, 2001 Main Street, Buffalo NY"
+        src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCQvJRWNsEuGsrSBISqXd5iUVmVgn_Xk64&q=Christ+the+King+Chapel%2C+2001+Main+St%2C+Buffalo%2C+NY+14208&zoom=15"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <!-- PHOTO SWAP: Christ the King Chapel — warm evening light (interior or facade). -->
+  <div class="river__photo photo ph-chapel">
+    <span class="photo__note">Photo: Christ the King Chapel — warm evening light</span>
   </div>
 </section>
 
