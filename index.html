@@ -218,8 +218,11 @@ img{ max-width:100%; display:block; }
 .events-wrap{ position:relative; }
 .events-wrap::after{ content:""; position:absolute; top:0; right:0; bottom:0; width:72px; background:linear-gradient(to right, rgba(242,239,231,0), var(--paper)); pointer-events:none; opacity:0; transition:opacity .3s; }
 .events-wrap.show-fade::after{ opacity:1; }
-.events-hint{ text-align:right; font-family:var(--sans); font-size:.68rem; font-weight:600; letter-spacing:.16em; text-transform:uppercase; color:var(--gold); margin:12px 2px 0; }
-.events-hint[hidden]{ display:none; }
+.events-nav{ position:absolute; top:50%; transform:translateY(-50%); z-index:3; width:42px; height:42px; border-radius:50%; border:1px solid var(--line); background:rgba(251,250,246,.96); color:var(--forest); font-family:var(--serif); font-size:1.7rem; line-height:1; cursor:pointer; display:flex; align-items:center; justify-content:center; box-shadow:0 2px 12px rgba(35,50,41,.12); transition:opacity .2s, color .2s, border-color .2s; }
+.events-nav:hover{ border-color:var(--gold); color:var(--gold); }
+.events-nav--prev{ left:-4px; }
+.events-nav--next{ right:-4px; }
+.events-nav[hidden]{ display:none; }
 .event{
   flex:0 0 196px; text-align:center; padding:30px 22px 34px;
   border-right:1px solid var(--line); scroll-snap-align:start;
@@ -733,6 +736,7 @@ img{ max-width:100%; display:block; }
     <!-- River Mass schedule. To update: add/edit an <article> with a data-date="YYYY-MM-DD".
          Past dates auto-hide; the first visible card is always the next Mass after today. -->
     <div class="events-wrap" id="events-wrap">
+      <button class="events-nav events-nav--prev" id="events-prev" type="button" aria-label="Previous dates" hidden>&lsaquo;</button>
     <div class="events" id="events-scroll">
       <article class="event" data-date="2026-07-05" data-time="09:00">
         <p class="event__month">July</p>
@@ -879,8 +883,8 @@ img{ max-width:100%; display:block; }
         <p class="event__note">Chapel on Campus</p>
       </article>
     </div>
+      <button class="events-nav events-nav--next" id="events-next" type="button" aria-label="More dates" hidden>&rsaquo;</button>
     </div>
-    <p class="events-hint" id="events-hint" hidden>Scroll for more &rarr;</p>
     <p id="events-empty" class="events-empty" hidden>The summer River Mass season has concluded &mdash; check back in the spring for next year&rsquo;s schedule.</p>
 
     <script>
@@ -900,21 +904,34 @@ img{ max-width:100%; display:block; }
         if (empty) empty.hidden = hasUpcoming;
         if (scroller) scroller.scrollLeft = 0;
 
-        // Scroll affordance: show fade + hint only when the row overflows and isn't at the end.
+        // Scroll controls: arrow buttons + wheel-to-horizontal; fade and buttons show only as needed.
         var wrap = document.getElementById('events-wrap');
-        var hint = document.getElementById('events-hint');
-        function updateHint() {
+        var prev = document.getElementById('events-prev');
+        var next = document.getElementById('events-next');
+        function step() { return Math.max(200, Math.round((scroller.clientWidth || 400) * 0.8)); }
+        function updateNav() {
           if (!scroller || !wrap) return;
           var overflow = scroller.scrollWidth - scroller.clientWidth > 4;
+          var atStart = scroller.scrollLeft <= 4;
           var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 4;
-          var show = overflow && !atEnd;
-          wrap.classList.toggle('show-fade', show);
-          if (hint) hint.hidden = !show;
+          wrap.classList.toggle('show-fade', overflow && !atEnd);
+          if (prev) prev.hidden = !(overflow && !atStart);
+          if (next) next.hidden = !(overflow && !atEnd);
         }
         if (scroller) {
-          scroller.addEventListener('scroll', updateHint, { passive: true });
-          window.addEventListener('resize', updateHint);
-          updateHint();
+          if (prev) prev.addEventListener('click', function () { scroller.scrollBy({ left: -step(), behavior: 'smooth' }); });
+          if (next) next.addEventListener('click', function () { scroller.scrollBy({ left: step(), behavior: 'smooth' }); });
+          scroller.addEventListener('wheel', function (e) {
+            if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+            var atStart = scroller.scrollLeft <= 0;
+            var atEnd = scroller.scrollLeft + scroller.clientWidth >= scroller.scrollWidth - 1;
+            if ((e.deltaY < 0 && atStart) || (e.deltaY > 0 && atEnd)) return;
+            e.preventDefault();
+            scroller.scrollLeft += e.deltaY;
+          }, { passive: false });
+          scroller.addEventListener('scroll', updateNav, { passive: true });
+          window.addEventListener('resize', updateNav);
+          updateNav();
         }
       })();
     </script>
