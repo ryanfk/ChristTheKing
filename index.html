@@ -266,6 +266,14 @@ img{ max-width:100%; display:block; }
 .infolist b{ font-weight:600; }
 .infolist span{ font-size:.9rem; color:var(--ink); }
 .infolist small{ display:block; font-size:.82rem; color:var(--ink-soft); font-weight:300; }
+/* Chapel Mass — forest-green panel variant (carries the former About-section green) */
+.river--forest .river__panel{ background:var(--forest); color:var(--limestone); }
+.river--forest .river__panel h2{ color:#fff; }
+.river--forest .infolist li{ border-bottom-color:rgba(232,227,215,.16); }
+.river--forest .infolist b{ color:#fff; }
+.river--forest .infolist span{ color:var(--limestone); }
+.river--forest .infolist small{ color:#c9ccc0; }
+.river--forest .river__map{ border-color:rgba(232,227,215,.2); background:transparent; }
 .river__map{
   border:1px solid var(--line); border-radius:4px; overflow:hidden;
   background:#e9ead9; position:relative;
@@ -1173,30 +1181,6 @@ img{ max-width:100%; display:block; }
   </div>
 </section>
 
-<!-- ============ ABOUT ============ -->
-<section class="about" id="about">
-  <div class="about__text">
-    <h2>About Our Chapel</h2>
-    <span class="rule"></span>
-    <p>Christ the King Chapel is the Catholic parish community serving Canisius University and the surrounding neighborhoods of Buffalo.</p>
-    <p>Rooted in the Jesuit tradition, we gather in worship, pursue truth, and serve our neighbors in love.</p>
-    <!-- IHS Jesuit sunburst -->
-    <svg class="about__ihs" viewBox="0 0 64 64" aria-hidden="true">
-      <circle cx="32" cy="32" r="16"/>
-      <g>
-        <path d="M32 4 v6 M32 54 v6 M4 32 h6 M54 32 h6"/>
-        <path d="M12 12 l4 4 M48 48 l4 4 M52 12 l-4 4 M16 48 l-4 4"/>
-      </g>
-      <text x="32" y="38" text-anchor="middle" font-family="Cormorant Garamond, serif" font-size="13" fill="none" stroke="#B08A47" stroke-width="0.8" letter-spacing="1">IHS</text>
-      <path d="M32 20 v6 M29 23 h6"/>
-    </svg>
-  </div>
-  <!-- PHOTO SWAP: students talking & laughing with the priest after Mass, coffee cups, real relationships. -->
-  <div class="about__photo photo ph-about">
-    <span class="photo__note">Photo: Students &amp; the priest after Mass — coffee, conversation, laughter</span>
-  </div>
-</section>
-
 <!-- ============ SUMMER RIVER MASS ============ -->
 <section class="river" id="river">
   <!-- PHOTO SWAP: wide golden-hour landscape — chairs set under oaks beside the river at the Lodge. -->
@@ -1248,7 +1232,7 @@ img{ max-width:100%; display:block; }
 </section>
 
 <!-- ============ CHAPEL MASS (mirrored: info left, photo right) ============ -->
-<section class="river" id="chapel">
+<section class="river river--forest" id="chapel">
   <div class="river__panel">
     <h2 style="margin-bottom:28px;">Chapel Mass</h2>
 
