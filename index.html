@@ -243,6 +243,35 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
 .event__note{ font-size:.8rem; color:var(--ink-soft); margin:0; }
 
 /* =========================================================
+   WEEKLY SCHEDULE  (single-week view, Sun–Sat cards)
+   >> EDIT HERE: each <div class="weekday"> is one day.
+   ========================================================= */
+.weekgrid{
+  display:flex; border-top:1px solid var(--line);
+  overflow-x:auto; scroll-snap-type:x proximity; -webkit-overflow-scrolling:touch;
+  scrollbar-width:thin; scrollbar-color:var(--line) transparent;
+}
+.weekgrid::-webkit-scrollbar{ height:6px; }
+.weekgrid::-webkit-scrollbar-track{ background:transparent; }
+.weekgrid::-webkit-scrollbar-thumb{ background:var(--line); border-radius:3px; }
+.weekgrid::-webkit-scrollbar-thumb:hover{ background:var(--gold); }
+.weekday{
+  flex:1 0 158px; min-width:158px; padding:26px 18px 30px;
+  border-right:1px solid var(--line); scroll-snap-align:start;
+}
+.weekday:last-child{ border-right:0; }
+.weekday__name{ font-family:var(--serif); font-size:1.35rem; text-align:center; margin:0; line-height:1; }
+.weekday__rule{ width:26px; height:1px; background:var(--gold); margin:12px auto 18px; }
+.weekday__item{ display:flex; gap:8px; align-items:flex-start; padding:8px 0; }
+.weekday__item + .weekday__item{ border-top:1px solid var(--line); }
+.wk-ico{ width:15px; height:15px; flex:0 0 15px; margin-top:2px; stroke:var(--gold); fill:none; stroke-width:1.5; stroke-linecap:round; stroke-linejoin:round; }
+.weekday__item b{ display:block; font-family:var(--sans); font-size:.74rem; font-weight:600; letter-spacing:.02em; color:var(--ink); line-height:1.3; }
+.weekday__item span{ display:block; font-size:.72rem; color:var(--ink-soft); margin-top:2px; }
+.weekday__none{ text-align:center; font-size:.8rem; color:var(--ink-soft); padding:8px 0; }
+.weekly__note{ text-align:center; font-size:.86rem; color:var(--ink-soft); margin:28px auto 0; max-width:520px; }
+.weekly__note b{ color:var(--ink); font-weight:600; }
+
+/* =========================================================
    ABOUT  (dark forest)
    ========================================================= */
 .about{ background:var(--forest); color:var(--limestone); display:grid; grid-template-columns:1fr 1.15fr; }
@@ -414,10 +443,10 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
     <nav>
       <ul class="menu" id="menu">
         <li><a class="is-active" href="#top">Home</a></li>
-        <li><a href="#announcements">Announcements</a></li>
         <li><a href="#schedule">Mass Times</a></li>
+        <li><a href="#weekly">Weekly Schedule</a></li>
         <li><a href="#river">River Mass</a></li>
-        <li><a href="#chapel">Chapel Mass</a></li>
+        <li><a href="#campus">Campus Mass</a></li>
         <li><a href="#join">Get Involved</a></li>
       </ul>
     </nav>
@@ -492,275 +521,6 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
       <p class="eyebrow">Current Status</p>
       <p class="status__title">Mass This Sunday</p>
       <p class="status__meta"><b>July 5 &middot; 9:00 AM</b><i>&bull;</i>The Pergola</p>
-    </div>
-  </div>
-</section>
-
-<!-- ============ ANNOUNCEMENTS ============ -->
-<section class="section section--paper" id="announcements">
-  <div class="wrap">
-    <div class="head-row">
-      <h2>Latest Announcements</h2>
-    </div>
-
-    <div class="cards">
-      <!-- ── Announcement 1 ───────────────────────────── -->
-      <article class="card">
-        <div class="card__icon">
-          <svg class="gicon gicon--card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38.93 36.52">
-  <defs>
-    <style>
-      .strm-cls-1 {
-        fill: #24394d;
-      }
-
-      .strm-cls-2 {
-        fill: #23384d;
-      }
-
-      .strm-cls-3 {
-        fill: #f9f7f5;
-      }
-
-      .strm-cls-4 {
-        fill: #22384d;
-      }
-
-      .strm-cls-5 {
-        fill: #22384c;
-      }
-
-      .strm-cls-6 {
-        fill: #22384b;
-      }
-
-      .strm-cls-7 {
-        fill: #23394e;
-      }
-
-      .strm-cls-8 {
-        fill: #23394d;
-      }
-
-      .strm-cls-9 {
-        fill: #253a4e;
-      }
-
-      .strm-cls-10 {
-        fill: #22394c;
-      }
-
-      .strm-cls-11 {
-        fill: #24394c;
-      }
-
-      .strm-cls-12 {
-        fill: #243a4e;
-      }
-    </style>
-  </defs>
-  <g>
-    <g>
-      <g id="Cloud">
-        <path class="strm-cls-9" d="M6.08,21.63c-2.44,0-4.53-1.51-5.5-3.65-1.18-2.61-.5-5.7,1.55-7.65,1.74-1.66,4.22-2.2,6.5-1.42.04-3.41,1.89-6.39,4.94-7.85.66-.36,1.31-.59,2.05-.75,2.66-.68,5.42-.22,7.74,1.24,1.61,1.01,2.82,2.47,3.57,4.26,3.09-.73,6.14,1.23,6.75,4.35,1.19.05,2.25.49,3.15,1.24,2.45,2.04,2.84,5.8.72,8.25-1.01,1.17-2.55,1.98-4.16,1.98H6.08Z"/>
-        <g>
-          <path class="strm-cls-3" d="M31.63,12.1c1.44-.85,3.19-.61,4.42.5,1.96,1.75,1.87,5.2-.26,6.72-.75.53-1.6.93-2.57.93H6.05c-1.31,0-2.57-.67-3.38-1.6-1.29-1.47-1.57-3.46-.9-5.27.93-2.53,3.79-4.06,6.33-3.18,1.36.47,2.48,1.31,3.41,2.39l.13.11s.11,0,.11-.04l.02-.2c-.22-1.11-.84-2.01-1.72-2.76-.13-2.06.47-4.16,1.88-5.69,1.61-1.74,3.9-2.59,6.26-2.59,3.15,0,6.27,1.97,7.42,4.93-1.26.73-2.14,1.88-2.39,3.27-.04.2-.08.42.12.55,1.68-2.34,4.19-4,6.84-2.6.97.51,1.81,1.53,2.06,2.76l-.83.35c-.06-.34-.21-.58-.37-.87-.98-1.77-3.28-2.32-4.96-1.09.62-.05,1.14-.15,1.77-.02,1.27.26,2.51,1.24,2.68,2.6-.99,1.22-1.08,2.84-.67,2.34.5-.62,1.05-1.12,1.78-1.55Z"/>
-          <path class="strm-cls-5" d="M14.18,4.49c-1.74,1.1-2.73,2.74-3.04,4.81-.37-1.43.06-2.86.86-4.07,1.12-1.58,2.84-2.6,4.77-2.87,3.16-.48,6.38,1.13,7.69,4.11-.72-.77-1.32-1.44-2.19-1.99-2.44-1.55-5.63-1.54-8.1.02Z"/>
-          <path class="strm-cls-10" d="M3.41,14.17c-.65,1.79,0,3.58,1.44,4.79-1.49-.46-2.4-1.81-2.54-3.3-.19-1.98.91-3.81,2.77-4.51,1.21-.49,2.51-.31,3.58.42l-.87-.11c-1.9-.24-3.7.86-4.37,2.71Z"/>
-          <path class="strm-cls-6" d="M33.52,19.18c1.1-.57,1.81-1.49,1.94-2.59.24-2.02-1.13-3.52-3.21-3.76.85-.38,1.75-.27,2.52.15,1.77.96,2.29,3.23,1.13,4.89-.54.77-1.4,1.27-2.38,1.32Z"/>
-        </g>
-      </g>
-      <path class="strm-cls-11" d="M15.36,36.52c-.26.02-.48-.08-.59-.23s-.18-.41-.06-.61l3.27-5.64c.16-.28.68-.19.86-.06.27.21.3.58.12.89l-2.95,5.1c-.15.27-.28.52-.65.56Z"/>
-      <path class="strm-cls-8" d="M22.63,34.04c-.18-.21-.16-.5-.04-.72l1.88-3.24c.18-.31.68-.27.88-.12.32.23.31.61.13.92l-1.7,2.94c-.12.21-.26.36-.46.41-.23.06-.51.02-.69-.19Z"/>
-      <path class="strm-cls-8" d="M10.51,34.05c-.17.29-.64.23-.84.11-.26-.16-.36-.52-.18-.82l1.94-3.31c.15-.26.63-.2.81-.09.25.15.38.54.21.83l-1.94,3.27Z"/>
-      <path class="strm-cls-1" d="M3.24,33.95c-.14-.26-.03-.52.1-.75l1.86-3.17c.19-.32.71-.19.88-.03.27.25.27.58.08.9l-1.68,2.89c-.14.24-.3.44-.54.46-.26.02-.55-.04-.7-.31Z"/>
-      <path class="strm-cls-7" d="M7.98,27.76c-.17.3-.63.25-.85.11s-.37-.51-.21-.8l1.97-3.41c.18-.31.63-.31.83-.18.34.24.38.57.19.91l-1.93,3.36Z"/>
-      <path class="strm-cls-4" d="M14.27,27.7c-.19.33-.59.35-.87.2-.26-.14-.4-.53-.22-.84l2.04-3.47c.18-.31.7-.19.88-.03.27.23.24.59.06.9l-1.89,3.25Z"/>
-      <path class="strm-cls-12" d="M20.76,27.75c-.18.31-.65.25-.85.12-.23-.15-.38-.51-.21-.79l2-3.46c.17-.3.63-.29.86-.13.28.19.35.56.16.89l-1.97,3.37Z"/>
-      <path class="strm-cls-2" d="M27.39,27.62c-.23.4-.63.46-.97.24-.31-.2-.33-.61-.12-.96l1.95-3.29c.18-.31.68-.26.89-.11.3.22.29.59.11.9l-1.85,3.22Z"/>
-    </g>
-  </g>
-</svg>
-        </div>
-        <h3>Outdoor Mass<br/>Moved Indoors</h3>
-        <p>Due to forecasted thunderstorms, Mass this Sunday will be held in the Chapel.</p>
-        <a class="card__link" href="#">Read More &rarr;</a>
-      </article>
-
-      <!-- ── Announcement 2 ───────────────────────────── -->
-      <article class="card">
-        <div class="card__icon">
-          <svg class="gicon gicon--card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32.61 54.06">
-  <defs>
-    <style>
-      .chal-cls-1 {
-        fill: #b08a47;
-      }
-
-      .chal-cls-2 {
-        fill: #fdfdfd;
-      }
-    </style>
-  </defs>
-  <g>
-    <g>
-      <path class="chal-cls-1" d="M26.57,53.37c-5.66.86-13.39.88-19.1.21-1.51-.18-4.08-.55-5.14-1.31-.22-.15-.3-.36-.28-.62.23-2.35,2.59-3.33,4.74-3.78,1.22-.26,2.32-.84,3.28-1.62,1.5-1.23,2.37-3.21,2.78-5.1.28-1.29.47-2.56.49-3.89l.06-4.8c-1.24-.33-2.16-1.14-2.2-2.37-.03-.78.32-1.48.96-1.95.36-.28.77-.43,1.24-.56v-3.26c-2.16-.37-4.11-1.13-5.86-2.34C3.53,19.16,1.41,14.83.63,10.05.19,7.33.05,4.63,0,1.88c.31-.71,1.81-.92,2.79-1.08C7.13.12,12.24,0,16.69,0c4.12,0,8.17.17,12.25.66,1.08.13,3.68.51,3.67,1.28-.03,2.21-.15,4.35-.41,6.54-.39,3.34-1.35,6.59-3.2,9.41-2.24,3.42-5.79,5.76-9.83,6.41v3.27c1.19.31,2.2,1.11,2.24,2.31.04,1.31-.88,2.21-2.24,2.55-.02,1.93-.02,3.79.12,5.71.15,2.18.57,4.27,1.62,6.17.74,1.34,1.88,2.34,3.25,2.99.76.36,1.51.54,2.32.73,2.02.46,4.18,1.76,4.03,3.95-.19.36-.67.58-1.04.72-.96.34-1.88.52-2.9.67Z"/>
-      <g>
-        <g>
-          <path class="chal-cls-2" d="M23.04,7.51c-.73.4-1.33.87-2.14,1.05.21-.31.44-.59.54-.91l-2.1.74-7.68.58c.92.14,1.67.11,2.51.16l6.36.37c.15,0,.31.06.39.15-4.21.26-8.35.21-12.53-.15-1.11-.09-2.1-.22-3.16-.49-.17-.04-.53-.19-.5-.4.14-.3.57-.4.89-.46,1.35-.29,2.69-.38,4.02-.56-2.5-.12-4.93-.02-7.39.33-.19-1.52-.22-2.99-.27-4.52.72.19,1.37.3,2.08.4,4.86.66,11.07.71,16.04.6,2.63-.06,5.16-.19,7.75-.51.96-.12,1.85-.25,2.81-.5l-.23,4.06c-.29.03-.58,0-.92-.04l.15-2.75-.95.19-.17,2.5-1.01-.03.11-2.27-.95.11-.14,2.14-3.49.21Z"/>
-          <path class="chal-cls-2" d="M21.58,3.05c-4.7.18-9.32.15-14-.19-1.75-.13-3.41-.27-5.18-.57.69-.21,1.36-.29,2.09-.39,2.36-.33,4.67-.47,7.08-.55,4.47-.14,8.88-.09,13.34.21,1.85.13,3.62.3,5.4.72-2.97.48-5.8.64-8.74.77Z"/>
-          <path class="chal-cls-2" d="M30.33,8.03c0,.15,0,.28-.05.48l-1.21-.45,1.27-.02Z"/>
-          <g>
-            <path class="chal-cls-2" d="M30.14,9.62c-.59,4.02-2.28,8-5.33,10.67-2.58,2.26-5.86,3.49-9.31,3.25-3.91-.27-7.42-2.29-9.74-5.42-1.84-2.49-2.87-5.46-3.33-8.57.68.32,1.34.49,2.05.64,1.52.33,2.99.49,4.56.63,3.51.26,6.94.33,10.46.21,2.44-.08,4.79-.24,7.2-.58,1.19-.17,2.28-.41,3.44-.84Z"/>
-            <path class="chal-cls-1" d="M24.75,15.23c.51-1.23.87-2.39,1.12-3.68.34-.06.67-.12,1.01-.09-.4,1.93-1.01,3.7-1.88,5.39-.65,1.26-1.48,2.3-2.38,3.4,1.65-1.04,2.71-2.57,3.61-4.19.78-1.55,1.33-3.13,1.7-4.85l1.03-.18c-.92,4.02-2.48,7.65-5.93,10.01-2.31,1.59-5.12,2.24-7.93,1.78,4.76-.37,7.85-3.23,9.64-7.6Z"/>
-          </g>
-        </g>
-        <g>
-          <path class="chal-cls-2" d="M10.03,49.69l-2.5-.38c1.93-.56,3.56-1.55,4.78-3.08,2.76-3.65,2.5-8.61,2.53-13.11l1.24.04c0,2.3-.04,4.52.14,6.78.33,4.21,1.43,7.86,5.43,9.84-3.94.35-7.73.31-11.61-.1Z"/>
-          <path class="chal-cls-2" d="M26.61,50.7c-1.84.42-3.66.65-5.6.88l4.82.55-3.18.37c-5.08.39-12.2.4-17.15-.58-.58-.12-1.13-.25-1.66-.49.03-.77.93-1.28,1.7-1.51,1.49.36,2.91.65,4.43.81,3.85.4,7.66.46,11.51.1,1.91-.18,3.72-.44,5.57-.92.78.3,1.59.74,1.72,1.53l-1.09.31c-.21-.43-.59-.89-1.09-1.05Z"/>
-          <path class="chal-cls-2" d="M25.02,49.31l-1.38.23c-3.76-1.35-5.39-3.74-6.06-7.62-.26-1.5-.39-2.97-.4-4.5l-.03-4.27.56-.04c0,2.03,0,3.98.15,6,.39,5.04,1.96,8.76,7.16,10.2Z"/>
-          <path class="chal-cls-2" d="M18.68,29.87c-.12-.31-.37-.53-.68-.64.21.49.12.97-.32,1.25s-.93.42-1.45.41c-1.02,0-2.01-.01-3.01-.23-.31-.07-.44-.59-.41-.85.04-.33.24-.65.59-.81,1.29-.6,3.87-.59,5.28-.15.42.13.79.38.92.79.08.27.07.52-.08.75-.12.17-.34.3-.62.33l-.46.04c.19-.25.38-.55.24-.9Z"/>
-          <polygon class="chal-cls-2" points="16.09 27.53 14.83 27.61 14.85 24.5 16.09 24.56 16.09 27.53"/>
-          <path class="chal-cls-2" d="M17.72,27.59c-.17.05-.33.01-.54-.02v-3.01c.18-.06.34-.05.52-.04l.02,3.07Z"/>
-          <path class="chal-cls-2" d="M17.9,32.14c-1.01.13-1.94.09-2.93.05-.31-.01-.59-.15-.6-.52,1.31.12,2.57.12,3.86-.02-.02.24-.15.38-.33.49Z"/>
-        </g>
-      </g>
-    </g>
-  </g>
-</svg>
-        </div>
-        <h3>No Daily Mass<br/>Thursday</h3>
-        <p>Fr. Betti will be away for a retreat. Daily Mass will resume Friday.</p>
-        <a class="card__link" href="#">View Schedule &rarr;</a>
-      </article>
-
-      <!-- ── Announcement 3 ───────────────────────────── -->
-      <article class="card">
-        <div class="card__icon">
-          <svg class="gicon gicon--card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49.49 33">
-  <defs>
-    <style>
-      .book-cls-1 {
-        fill: #163021;
-      }
-
-      .book-cls-2 {
-        fill: #173123;
-      }
-
-      .book-cls-3 {
-        fill: #193524;
-      }
-
-      .book-cls-4 {
-        fill: #163122;
-      }
-
-      .book-cls-5 {
-        fill: #183324;
-      }
-
-      .book-cls-6 {
-        fill: #fcfcfc;
-      }
-
-      .book-cls-7 {
-        fill: #173223;
-      }
-
-      .book-cls-8 {
-        fill: #153021;
-      }
-
-      .book-cls-9 {
-        fill: #fdfdfd;
-      }
-    </style>
-  </defs>
-  <g>
-    <g>
-      <path class="book-cls-3" d="M28.67,31.56c-.09.94-1.57,1.25-2.56,1.36-1.55.18-3.32.11-4.72-.54-.34-.16-.47-.49-.59-.79-.61-.24-1.34-.26-2-.3-1.21-.08-2.33,0-3.55.07l-9.9.57-4.76.24c-.29.01-.62-.41-.59-.75L2.2,6.4l.14-1.77c.06-.54.44-.92.98-.98.64-.08,1.27-.03,1.91.03l.42-2.11c1.74.42,3.48.4,5.2-.06l2.6-.81C14.72.31,15.95.05,17.29,0c2.64-.02,6,1.03,7.43,3.29C26.26,1.06,29.38.02,32.01,0c1.4,0,2.71.29,4.03.7l2.3.72c1.8.56,3.66.57,5.52.14l.42,2.04,2,.07c.51.02.86.47.86.99l.8,8.86.83,9.53.71,8.3c.03.36-.28.83-.67.81l-16.73-.91c-1.19-.06-2.29.03-3.42.3Z"/>
-      <g>
-        <path class="book-cls-9" d="M22.77,26.96c.6.64,1.06,1.37,1,2.29-.41-1.01-1.08-1.77-2.02-2.28-2.66-1.44-6.21-.65-9.05.19l-2.65.76c-2.3.66-4.68.85-7.09.6l1.97-22.99c.03-.38.06-.64,0-.99.2.04.36.08.53.21l-1.01,14.03-.57,7.85c-.03.41.24.62.58.69,2.98.55,5.6-.09,8.43-.95,2.39-.72,4.88-1.36,7.33-.76.96.23,1.82.65,2.55,1.34Z"/>
-        <path class="book-cls-9" d="M26.79,26.89c.78-.7,1.68-1.11,2.7-1.33,2.62-.56,5.2.21,7.73.98,2.66.81,5.22,1.28,7.98.72.25-.05.44-.3.42-.56l-.3-4.28-1.28-17.56c.06-.2.29-.3.48-.35l.26,3.5,1.75,20.51c-2.35.24-4.67.06-6.92-.57l-4.34-1.22c-2.44-.59-5.23-.97-7.47.21-.98.52-1.65,1.27-2.06,2.31-.07-.95.43-1.71,1.06-2.36Z"/>
-        <path class="book-cls-9" d="M26.69,29.28c.71-1.41,2.36-1.92,3.88-2.04,1.68-.13,3.31.12,4.94.55l3.4,1.05c1.86.58,3.7.98,5.66,1.03,1.02.03,2.01.1,3,0,.16-.2-.05-.37-.07-.56l-.95-11.04-1.15-13.4c.03-.22.27-.41.45-.46l1.15,12.87,1.19,13.46-3.8-.2c-1.78-.09-3.48-.34-5.21-.81l-3.43-.96c-2.88-.81-6.58-1.4-9.08.51Z"/>
-        <path class="book-cls-9" d="M22.79,29.25c-1.31-.96-2.84-1.27-4.46-1.24-1.11.03-2.17.15-3.24.43l-3.81,1.03c-1.66.45-3.25.89-4.97.99l-4.95.29c-.15-.49,0-.92.04-1.41l.79-8.77,1-11.19.47-4.98c.18.14.31.24.44.43l-1.59,18.17-.56,6.37c0,.1-.18.22-.14.32.04.11.14.21.31.21,1.63.07,3.23.02,4.86-.2,1.37-.19,2.63-.55,3.94-.96l3.31-1.01c1.82-.56,5.02-.79,6.79,0,.71.33,1.36.76,1.75,1.51Z"/>
-        <path class="book-cls-6" d="M27.51,31.18c-.08.23-.42.34-.65.4-1.41.37-2.87.36-4.28-.01-.23-.06-.54-.2-.6-.42-.08-.33-.06-.63-.03-.98.18.4.51.64.95.77,1.21.36,2.5.34,3.73.01.44-.12.75-.39.93-.79.02.34.09.67-.04,1.01Z"/>
-        <g>
-          <g>
-            <path class="book-cls-9" d="M37.17,25.32c-1.51-.46-2.95-.82-4.49-.98-2.72-.25-5.52.24-7.27,2.48V4.28c.93-1.84,2.97-2.71,4.96-3.02,1.72-.26,3.41-.11,5.08.36l2.4.75c1.63.51,3.31.65,5.05.39l1.66,23.31c-2.48.49-4.94,0-7.39-.75Z"/>
-            <g>
-              <path class="book-cls-1" d="M36.44,22.06l-1.48-.53c-2.26-.81-5.54-.85-7.32.87-.1-.06-.12-.16-.11-.23,0-.06.07-.14.13-.21,1.55-1.69,4.4-1.83,6.58-1.27l2.25.76c1.85.63,3.43.95,5.39.47.05.19.05.35,0,.53-1.76.5-3.68.24-5.44-.39Z"/>
-              <path class="book-cls-7" d="M41.69,19.13c-1.25.49-3.37.31-4.64-.14l-1.94-.69c-2.56-.91-5.31-.97-7.56.74.12-.47.5-.69.82-.95,1.8-1.22,4.22-1.2,6.27-.56l2.06.75c1.61.59,3.31.74,4.98.39v.45Z"/>
-              <path class="book-cls-2" d="M41.34,12.55c-1.64.55-3.61.2-5.24-.39l-1.55-.56c-2.09-.75-5.18-.66-7.02.9.11-.5.52-.76.89-1.01,1.79-1.18,4.44-1.12,6.43-.39l2.02.73c1.44.53,2.98.61,4.47.28.05.14.05.35-.01.44Z"/>
-              <path class="book-cls-7" d="M36.76,15.65l-2.1-.75c-2.15-.77-5.33-.74-7.08.9-.08-.22.07-.36.21-.5.68-.7,1.58-1.11,2.56-1.3,1.72-.33,3.42-.07,5.05.56.83.32,1.6.63,2.47.8,1.21.25,2.41.31,3.62.02.05.13.06.36-.01.44-1.21.51-3.42.29-4.72-.18Z"/>
-              <path class="book-cls-8" d="M40.59,6.17c-1.24.21-2.46.06-3.64-.29l-1.89-.67c-2.45-.87-5.42-1-7.49.74.02-.37.3-.56.52-.76,1.37-1.23,3.71-1.4,5.52-1.01.78.17,1.48.43,2.22.72,1.6.63,3.39,1.06,5.07.66.06.14.05.32,0,.41-.03.08-.15.16-.32.19Z"/>
-              <path class="book-cls-4" d="M40.34,9.49c-1.34.14-2.62-.03-3.85-.47l-1.83-.66c-2.23-.8-5.22-.73-7.09.82.06-.41.36-.56.59-.78,1.68-1.31,4.15-1.33,6.16-.74l2.12.76c1.46.52,3.25.82,4.73.39.05.11.09.38-.02.47-.21.15-.51.18-.81.22Z"/>
-            </g>
-          </g>
-          <g>
-            <path class="book-cls-9" d="M10.78,25.75c-1.93.54-3.87.68-5.85.35l.49-6.45.44-6.06.74-10.82c1.87.28,3.67.02,5.43-.52l2.21-.68c2.49-.66,5.25-.62,7.57.53.96.48,1.75,1.18,2.26,2.14v22.57c-1.53-1.92-3.87-2.59-6.28-2.53-1.47.04-2.87.31-4.29.7l-2.74.77Z"/>
-            <g>
-              <path class="book-cls-7" d="M13.16,22.03c-1.86.65-3.72.97-5.58.41l.02-.51c1.78.46,3.72.17,5.41-.48.91-.35,1.76-.69,2.72-.87,2.07-.41,4.67-.19,6.11,1.39.12.13.17.29.03.45-1.81-1.6-4.46-1.71-6.73-1.07l-1.97.68Z"/>
-              <path class="book-cls-5" d="M10.93,19.34c-1.06.14-2.07.14-3.06-.16-.14-.04-.13-.32-.08-.5,1.55.32,3.17.27,4.7-.29l1.86-.69c2.13-.79,4.95-.9,6.8.44.33.24.66.47.79.91-2.32-1.7-5.11-1.67-7.71-.68-1.08.41-2.12.82-3.3.97Z"/>
-              <path class="book-cls-4" d="M12.97,15.57c-1.55.55-3.51.78-5,.26-.04-.17-.03-.31,0-.44,1.52.33,3.03.2,4.48-.25l1.87-.69c2.1-.77,4.78-.93,6.7.28.54.34,1.14.94.88,1.06-.07.03-.09-.04-.15-.09-1.83-1.53-4.53-1.54-6.77-.85l-2,.72Z"/>
-              <path class="book-cls-7" d="M13.22,12.21c-1.72.59-3.34.84-5.08.36-.04-.16-.04-.29,0-.47,1.3.3,2.62.22,3.91-.11l2.13-.75c1.54-.55,3.13-.82,4.75-.56.95.15,1.81.52,2.53,1.13.21.18.44.36.48.69-1.89-1.46-4.36-1.64-6.59-1.02l-2.12.72Z"/>
-              <path class="book-cls-4" d="M14.2,5.31c-1.75.67-3.37,1.19-5.28.86-.13-.02-.27-.06-.31-.14-.06-.1-.05-.26-.02-.44,1.89.38,3.56-.07,5.35-.8,1.33-.55,2.69-.86,4.13-.78,1.17.06,2.27.37,3.19,1.06.3.23.63.46.67.88-2.23-1.75-5.19-1.62-7.73-.64Z"/>
-              <path class="book-cls-4" d="M12.17,9.27c-1.27.32-2.55.39-3.79.06-.12-.07-.08-.42-.02-.48.96.24,1.89.2,2.84.06,1.02-.15,1.94-.51,2.89-.89,2.24-.88,4.97-1.12,7.02.22.31.28.74.45.83.98-2.41-1.76-4.93-1.58-7.69-.65l-2.08.71Z"/>
-            </g>
-          </g>
-        </g>
-      </g>
-    </g>
-  </g>
-</svg>
-        </div>
-        <h3>Sunday Bulletin</h3>
-        <p>Read this week&rsquo;s bulletin for announcements, reflections, and more.</p>
-        <a class="card__link" href="#">View Bulletin (PDF) &rarr;</a>
-      </article>
-
-      <!-- ── Announcement 4 ───────────────────────────── -->
-      <article class="card">
-        <div class="card__icon">
-          <svg class="gicon gicon--card" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.02 47.34">
-  <defs>
-    <style>
-      .hrt-cls-1 {
-        fill: #183d2b;
-      }
-
-      .hrt-cls-2 {
-        fill: #fdfdfd;
-      }
-    </style>
-  </defs>
-  <g>
-    <g>
-      <path class="hrt-cls-1" d="M31.96,23c-1.99,1.62-3.91,3.1-6.03,4.47-.24.16-.49.25-.76.07l-2.55-1.76c-2.11-1.45-4.02-3.07-5.93-4.78-1.62-1.45-3.09-2.94-4.36-4.69-2.1-2.89-2.87-6.49-1.99-9.97C11.35,2.4,14.56-.05,18.64,0c2.8.04,5.35,1.36,6.87,3.81C26.92,1.56,29.21.25,31.81.04c2.32-.19,4.56.46,6.31,1.98,1.21,1.13,2.05,2.49,2.49,4.1.89,3.33.3,6.86-1.61,9.72s-4.46,5.06-7.04,7.16Z"/>
-      <g>
-        <path class="hrt-cls-2" d="M37.74,15.06c-1.11,1.67-2.36,3.06-3.82,4.41-2.64,2.44-5.45,4.64-8.4,6.71-2.1-1.44-4.02-2.95-5.95-4.55-1.54-1.28-2.96-2.57-4.3-4.05-.99-1.1-1.87-2.19-2.56-3.52-1.71-3.27-1.76-7.97.95-10.65,1.4-1.39,3.29-1.99,5.25-1.95,4.83.08,6.29,4.32,6.56,4.37.07.01.17-.05.22-.14.53-.92,1.11-1.77,1.91-2.49,1.52-1.37,3.52-1.9,5.55-1.7,2.99.29,5.31,2.28,6.06,5.19s.17,5.84-1.46,8.37Z"/>
-        <g>
-          <path class="hrt-cls-1" d="M26.32,17.68h-1.59c-.49,0-.8-.45-.8-.91v-2.46s-2.38-.03-2.38-.03c-.48,0-.84-.41-.84-.88v-1.53c.01-.57.65-.82,1.18-.82h2.04s0-2.46,0-2.46c0-.51.38-.91.89-.91h1.35c.47,0,.94.35.94.85l.03,2.52,2.29.04c.49,0,.92.38.92.88v1.4c0,.55-.45.92-.98.93l-2.23.02-.03,2.52c0,.41-.33.85-.79.85Z"/>
-          <path class="hrt-cls-2" d="M26.12,16.57c-.38.11-.76.07-1.16,0l-.02-3.29-3.12-.03c-.07-.39-.1-.77.02-1.13l3.08-.04.07-3.33c.37-.09.75-.07,1.14.01l.03,3.32,3.12.05c.11.37.08.74.01,1.13l-3.14.03v3.29Z"/>
-        </g>
-      </g>
-    </g>
-    <g>
-      <path class="hrt-cls-1" d="M8.77,32.02c.25.25.21.6.04.8-.15.18-.54.26-.77.06-1.42-1.24-2.51-2.77-3.3-4.49s-.23-3.12-1.07-4.73c-.23-.45-.31-.9-.26-1.41.16-1.68.2-3.33-.1-4.99-.17-.96-.62-2.13-1.3-1.9-.19.06-.3.29-.32.54-.07.97,0,1.9.02,2.88.05,1.71-.08,3.34-.39,5.01-.13.69.04,1.4.21,2.07.46,1.78.86,3.48,1.23,5.28.23,1.13.75,2.2,1.68,2.9l4.83,3.6c1.13.84,2.22,1.67,3.17,2.71,1.3,1.43.52,4.28-.26,6.08-.13.31-.58.3-.78.19-.33-.18-.37-.52-.24-.87.54-1.4,1.15-3.85.14-4.71-2.03-1.74-4.16-3.28-6.36-4.79l-2.15-1.63c-.6-.45-.91-1.1-1.06-1.84l-.86-4.14-.79-3.43c-.32-1.4.31-3.32.34-5.21l.08-3.99c.01-.6.32-1.14.76-1.5.39-.31.59-.65.75-1.11.19-.54.56-1.05,1.13-1.22.84-.25,1.71.09,2.29.74,1.38,1.55,1.48,4.19,1.4,6.3-.02.6-.06,1.15,0,1.77.89.65,1.45,1.53,1.9,2.52.41.89.54,1.81.87,2.75.16.47.8.73,1.29.82,3.76.7,7.14,2.79,9.29,5.98,1.58,2.35,2.37,5.12,2.09,7.93-.19,2-.37,3.91-.46,5.91-.01.33-.43.45-.65.44s-.59-.15-.61-.47c-.08-2.36.28-4.63.47-7,.13-1.63-.35-3.21-1.06-4.67-1.54-3.17-4.4-5.58-7.84-6.56.28.65.78,1.07,1.3,1.43,2.87.97,5.19,2.65,5.76,5.75.06.31-.18.56-.41.6-.9.17-.67-1.55-2.26-3.21-1.43-1.5-3.57-1.75-4.16-2.35l-1.82-1.87-2-1.95c-.48-.47-.24-2.62-1.86-4.46-.63-.71-1.53-.92-1.86-.44-.12.17-.12.43-.02.63.92,1.88.47,3.28.83,4.36.63,1.87,1.73,3.49,3.14,4.89Z"/>
-      <path class="hrt-cls-2" d="M5.46,20.54c-.26.16-.46.21-.72.25-.02-2.08.05-4.56-1.32-6.14.02-.4-.1-.96.17-1.26.42-.48,1.38.53,1.7,1.97.37,1.69.38,3.42.17,5.18Z"/>
-    </g>
-    <g>
-      <path class="hrt-cls-1" d="M43.1,32.8c-.27.25-.62.22-.82.07-.21-.16-.27-.6-.06-.82,1.38-1.38,2.52-2.97,3.14-4.85.36-1.09-.11-2.61.88-4.4.1-.18.11-.42.03-.58-.23-.48-1.15-.47-1.86.27-1.69,1.75-1.4,4.07-2.01,4.66-1.05,1.02-2.12,1.95-3.08,3.07-.46.53-1.02.88-1.66,1.14l-1.24.52c-1.59.66-2.72,1.94-3.31,3.56-.22.6-.47,1.13-.99.92-.23-.1-.36-.35-.3-.63.38-1.63,1.27-3.07,2.6-4.08.97-.74,2.04-1.15,3.15-1.61.59-.24,1.06-.79,1.33-1.4-3.61,1.02-6.57,3.63-8.03,6.99-.59,1.34-.97,2.75-.84,4.21.21,2.35.55,4.63.5,6.98,0,.34-.42.49-.66.47-.27-.02-.61-.17-.64-.52l-.43-5.35c-.34-2.9.32-5.78,1.94-8.22,2.03-3.07,5.2-5.24,8.79-6.02.99-.22,1.84-.36,2.03-1.29.39-1.88,1.08-3.74,2.64-4.93l-.03-2.48.16-2.55c.08-1.31.93-3.27,2.36-3.76,1-.35,1.94.14,2.28,1.13.16.47.36.86.77,1.17.52.38.79.98.8,1.64l.04,2.72c.02,1.39.1,2.73.36,4.1.17.89.13,1.76-.08,2.63l-.73,3.14-.91,4.27c-.14.65-.48,1.23-1.01,1.63l-2.05,1.56c-2.13,1.45-4.16,2.93-6.14,4.56-.5.42-.77.92-.82,1.6-.07,1.21.25,2.38.72,3.5.15.37-.14.72-.41.78-.48.11-.72-.16-.85-.56-.39-1.14-.79-2.23-.75-3.47.02-.76.1-1.66.66-2.24,1.46-1.48,3.09-2.69,4.77-3.92l2.9-2.12c.95-.7,1.64-1.6,1.91-2.77l.92-4.08.61-2.63c.16-.7-.07-1.39-.17-2.1-.19-1.26-.18-2.5-.18-3.78v-3.06c0-.22-.11-.44-.26-.52-.61-.3-1.13.7-1.32,1.67-.34,1.71-.3,3.42-.17,5.16.04.55-.01,1.04-.26,1.52-.85,1.68-.2,3-1.2,5.04-.74,1.52-1.73,2.87-3,4.04Z"/>
-      <path class="hrt-cls-2" d="M46.29,20.73c-.29.01-.48-.07-.71-.17-.28-1.75-.24-3.53.16-5.27.22-.95.85-2.16,1.67-1.95.26.23.31,1.05.12,1.35-.49.74-.83,1.43-.99,2.3-.22,1.23-.28,2.43-.25,3.74Z"/>
-    </g>
-  </g>
-</svg>
-        </div>
-        <h3>Volunteer<br/>Sign-Up</h3>
-        <p>Help welcome, set up, or serve at River Mass this summer.</p>
-        <a class="card__link" href="#">Sign Up Here &rarr;</a>
-      </article>
     </div>
   </div>
 </section>
@@ -1022,9 +782,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">July</p>
         <p class="event__day">5</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-07-12" data-time="09:00">
         <p class="event__month">July</p>
@@ -1038,9 +798,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">July</p>
         <p class="event__day">12</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-07-19" data-time="09:00">
         <p class="event__month">July</p>
@@ -1054,9 +814,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">July</p>
         <p class="event__day">19</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-07-26" data-time="09:00">
         <p class="event__month">July</p>
@@ -1070,9 +830,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">July</p>
         <p class="event__day">26</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-08-02" data-time="09:00">
         <p class="event__month">August</p>
@@ -1086,9 +846,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">August</p>
         <p class="event__day">2</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-08-09" data-time="09:00">
         <p class="event__month">August</p>
@@ -1102,9 +862,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">August</p>
         <p class="event__day">9</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-08-16" data-time="09:00">
         <p class="event__month">August</p>
@@ -1118,9 +878,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">August</p>
         <p class="event__day">16</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
       <article class="event" data-date="2026-08-23" data-time="09:00">
         <p class="event__month">August</p>
@@ -1134,25 +894,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <p class="event__month">August</p>
         <p class="event__day">23</p>
         <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
+        <h3>Campus Mass</h3>
         <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
-      </article>
-      <article class="event" data-date="2026-09-06" data-time="09:00">
-        <p class="event__month">September</p>
-        <p class="event__day">6</p>
-        <div class="event__icon"><svg class="gicon gicon--event" viewBox="0 0 49.08 23.82" aria-hidden="true"><use href="#ico-wave"/></svg></div>
-        <h3>Outdoor River Mass</h3>
-        <p class="event__time">9:00 AM</p>
-        <p class="event__note">Buffalo RiverFest Park</p>
-      </article>
-      <article class="event" data-date="2026-09-06" data-time="19:00">
-        <p class="event__month">September</p>
-        <p class="event__day">6</p>
-        <div class="event__icon"><svg class="gicon gicon--chapel" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Evening Mass</h3>
-        <p class="event__time">7:00 PM</p>
-        <p class="event__note">Chapel on Campus</p>
+        <p class="event__note">Outdoors on Campus</p>
       </article>
     </div>
       <button class="events-nav events-nav--next" id="events-next" type="button" aria-label="More dates" hidden>&rsaquo;</button>
@@ -1227,7 +971,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
       </li>
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l4 2"/></svg>
-        <span><b>Sundays at 9:00 AM</b><small>June 29 through Labor Day (weather permitting)</small></span>
+        <span><b>Sundays at 9:00 AM</b><small>June 28 through August 23 (weather permitting)</small></span>
       </li>
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16 v-3 l2 -5 a2 2 0 0 1 2 -1 h10 a2 2 0 0 1 2 1 l2 5 v3"/><path d="M3 16 h18 M3 16 v2 M21 16 v2"/><circle cx="7" cy="16" r="1.6"/><circle cx="17" cy="16" r="1.6"/></svg>
@@ -1260,19 +1004,19 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   </div>
 </section>
 
-<!-- ============ CHAPEL MASS (mirrored: info left, photo right) ============ -->
-<section class="river river--forest" id="chapel">
+<!-- ============ CAMPUS MASS (mirrored: info left, photo right) ============ -->
+<section class="river river--forest" id="campus">
   <div class="river__panel">
-    <h2 style="margin-bottom:28px;">Chapel Mass</h2>
+    <h2 style="margin-bottom:28px;">Campus Mass</h2>
 
     <ul class="infolist">
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22 C7 16 5 12 5 9 a7 7 0 0 1 14 0 c0 3 -2 7 -7 13 Z"/><circle cx="12" cy="9" r="2.4"/></svg>
-        <span><b>Christ the King Chapel</b><small>2001 Main Street, Buffalo, NY 14208<br/>On the Canisius University campus.</small></span>
+        <span><b>Canisius University Campus</b><small>2001 Main Street, Buffalo, NY 14208<br/>Held outdoors on campus &mdash; moving into Christ the King Chapel if the weather doesn&rsquo;t cooperate.</small></span>
       </li>
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7 v5 l4 2"/></svg>
-        <span><b>Sundays at 7:00 PM</b><small>Evening Mass in the chapel.</small></span>
+        <span><b>Sundays at 7:00 PM</b><small>Outdoors, weather permitting.</small></span>
       </li>
       <li>
         <svg class="icon icon--gold" viewBox="0 0 24 24" aria-hidden="true"><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/><path d="M3 19 a5 5 0 0 1 10 0 M12 19 a5 5 0 0 1 9 -3"/></svg>
@@ -1294,6 +1038,82 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   <!-- PHOTO SWAP: Christ the King Chapel — warm evening light (interior or facade). -->
   <div class="river__photo photo ph-chapel">
     <span class="photo__note">Photo: Christ the King Chapel — warm evening light</span>
+  </div>
+</section>
+
+<!-- ============ WEEKLY SCHEDULE (single-week view) ============ -->
+<section class="section" id="weekly">
+  <div class="wrap">
+    <div class="section__head" style="margin-bottom:34px;">
+      <span class="eyebrow">Every Week</span>
+      <h2 style="text-transform:uppercase; letter-spacing:.1em; font-size:1.9rem;">Weekly Schedule</h2>
+    </div>
+
+    <!-- Tiny reusable icons for the weekly list -->
+    <svg width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true">
+      <symbol id="wk-cross" viewBox="0 0 24 24"><path d="M12 3 V21 M7.5 8 H16.5"/></symbol>
+      <symbol id="wk-confess" viewBox="0 0 24 24"><path d="M4 5 h16 v10 h-9 l-4 4 v-4 H4 Z"/></symbol>
+      <symbol id="wk-adore" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.5 v2 M12 18.5 v2 M3.5 12 h2 M18.5 12 h2 M6.2 6.2 l1.4 1.4 M16.4 16.4 l1.4 1.4 M17.8 6.2 l-1.4 1.4 M6.2 17.8 l1.4 -1.4"/></symbol>
+      <symbol id="wk-oil" viewBox="0 0 24 24"><path d="M12 3.5 C12 3.5 6 11 6 15 a6 6 0 0 0 12 0 C18 11 12 3.5 12 3.5 Z"/></symbol>
+    </svg>
+
+    <div class="weekgrid">
+      <!-- SUNDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Sunday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>River Mass</b><span>9:00 AM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Campus Mass</b><span>7:00 PM</span></div></div>
+      </div>
+
+      <!-- MONDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Monday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- TUESDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Tuesday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- WEDNESDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Wednesday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- THURSDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Thursday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- FRIDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Friday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-adore"/></svg><div><b>Adoration</b><span>Noon &ndash; 1:00 PM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-oil"/></svg><div><b>Anointing of the Sick</b><span>After Mass</span></div></div>
+      </div>
+
+      <!-- SATURDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Saturday</p>
+        <div class="weekday__rule"></div>
+        <p class="weekday__none">&mdash;</p>
+      </div>
+    </div>
+
+    <p class="weekly__note"><b>Baptisms</b> by appointment &mdash; please contact Fr. Betti.</p>
   </div>
 </section>
 
@@ -1326,8 +1146,8 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
       <!-- ── Chapel Mass feed ── -->
       <div class="signup">
         <div class="signup__icon"><svg class="gicon" viewBox="0 0 851.11 942.04" aria-hidden="true"><use href="#ico-chapel"/></svg></div>
-        <h3>Chapel Mass</h3>
-        <p class="signup__sub">Sundays at 7:00 PM &middot; Christ the King Chapel on campus.</p>
+        <h3>Campus Mass</h3>
+        <p class="signup__sub">Sundays at 7:00 PM &middot; outdoors on campus, weather permitting.</p>
         <form action="https://helmcode.dev/signup/v1/subscribe/" method="post">
           <input type="hidden" name="token" value="sft_bade48c47892fac3fc4984090ba28ba8b08eb8a5ad53ffc2299efc5423a632b2">
           <input type="text" name="website" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px" aria-hidden="true">
