@@ -25,6 +25,117 @@
 <meta name="twitter:image" content="https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/eddb7da8-55f6-46e0-8eca-6b060c790dbd.jpg" />
 <meta name="twitter:image:alt" content="Christ the King Chapel congregation gathered for Mass under the pergola" />
 
+<!-- ===== Structured data: Church entity + recurring Masses (SEO / AI-SEO) ===== -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Church",
+      "@id": "https://christtheking.faith/#church",
+      "name": "Christ the King Chapel",
+      "url": "https://christtheking.faith/",
+      "description": "Christ the King Chapel is the Catholic, Jesuit-run place of worship on the Canisius University campus in Buffalo, New York. Built in 1951 in the Romanesque style by architect Duane Lyman and seating 492, it offers daily and Sunday Mass, confession, adoration, and a summer Outdoor River Mass on the Buffalo River.",
+      "image": "https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/eddb7da8-55f6-46e0-8eca-6b060c790dbd.jpg",
+      "foundingDate": "1951",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "2001 Main Street",
+        "addressLocality": "Buffalo",
+        "addressRegion": "NY",
+        "postalCode": "14208",
+        "addressCountry": "US"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 42.9330,
+        "longitude": -78.8460
+      },
+      "areaServed": [
+        { "@type": "City", "name": "Buffalo" },
+        { "@type": "CollegeOrUniversity", "name": "Canisius University" }
+      ],
+      "sameAs": [
+        "https://www.canisius.edu/student-experience/faith-service/campus-ministry/christ-king-chapel",
+        "https://buffaloah.com/a/main/2001/tc.html",
+        "https://catholicmasstime.org/church/canisius-college/8270/",
+        "https://wanderlog.com/place/details/7645124/christ-the-king-chapel"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://christtheking.faith/#website",
+      "url": "https://christtheking.faith/",
+      "name": "Christ the King Chapel",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://christtheking.faith/#church" }
+    },
+    {
+      "@type": "Event",
+      "name": "Outdoor River Mass",
+      "description": "Catholic outdoor Mass celebrated on the Buffalo River at Buffalo RiverFest Park, Sundays at 9:00 AM through the summer. All are welcome — families, children, and well-behaved dogs; donuts follow Mass.",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "isAccessibleForFree": true,
+      "image": "https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/eddb7da8-55f6-46e0-8eca-6b060c790dbd.jpg",
+      "organizer": { "@id": "https://christtheking.faith/#church" },
+      "location": {
+        "@type": "Place",
+        "name": "Buffalo RiverFest Park",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "249 Ohio Street",
+          "addressLocality": "Buffalo",
+          "addressRegion": "NY",
+          "postalCode": "14204",
+          "addressCountry": "US"
+        }
+      },
+      "eventSchedule": {
+        "@type": "Schedule",
+        "repeatFrequency": "P1W",
+        "byDay": "https://schema.org/Sunday",
+        "startTime": "09:00",
+        "endTime": "10:00",
+        "startDate": "2026-06-28",
+        "endDate": "2026-08-23",
+        "scheduleTimezone": "America/New_York"
+      }
+    },
+    {
+      "@type": "Event",
+      "name": "Outdoor Campus Mass",
+      "description": "Sunday evening Catholic Mass held outdoors on the Canisius University campus at 7:00 PM, moving into Christ the King Chapel in poor weather. Students, families, and neighbors welcome.",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "isAccessibleForFree": true,
+      "image": "https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/eddb7da8-55f6-46e0-8eca-6b060c790dbd.jpg",
+      "organizer": { "@id": "https://christtheking.faith/#church" },
+      "location": {
+        "@type": "Place",
+        "name": "Canisius University Campus",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "2001 Main Street",
+          "addressLocality": "Buffalo",
+          "addressRegion": "NY",
+          "postalCode": "14208",
+          "addressCountry": "US"
+        }
+      },
+      "eventSchedule": {
+        "@type": "Schedule",
+        "repeatFrequency": "P1W",
+        "byDay": "https://schema.org/Sunday",
+        "startTime": "19:00",
+        "endTime": "20:00",
+        "scheduleTimezone": "America/New_York"
+      }
+    }
+  ]
+}
+</script>
+
 <!-- =========================================================
      TYPOGRAPHY
      Headings: Cormorant Garamond  |  Body: Inter
