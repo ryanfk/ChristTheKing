@@ -511,6 +511,9 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   .about__text{ padding:64px 32px; }
   .about__photo{ min-height:320px; order:-1; }
   .river{ grid-template-columns:1fr; }
+  /* Stacked mobile order for both mass sections: photo then info, photo then info
+     (desktop keeps the mirrored info/photo layout above). */
+  .river__photo{ order:-1; }
   .river__panel{ padding:48px 32px; }
 }
 @media (max-width:680px){
