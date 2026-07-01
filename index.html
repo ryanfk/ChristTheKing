@@ -39,6 +39,7 @@
       "@id": "https://christtheking.faith/#church",
       "name": "Christ the King Chapel",
       "url": "https://christtheking.faith/",
+      "email": "bettif@canisius.edu",
       "description": "Christ the King Chapel is the Catholic, Jesuit-run place of worship on the Canisius University campus in Buffalo, New York. Built in 1951 in the Romanesque style by architect Duane Lyman and seating 492, it offers daily and Sunday Mass, confession, adoration, and a summer Outdoor River Mass on the Buffalo River.",
       "image": "https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/eddb7da8-55f6-46e0-8eca-6b060c790dbd.jpg",
       "foundingDate": "1951",
@@ -131,8 +132,7 @@
         "@type": "Schedule",
         "repeatFrequency": "P1W",
         "byDay": "https://schema.org/Sunday",
-        "startDate": "2026-06-28",
-        "endDate": "2026-08-23",
+        "startDate": "2026-01-04",
         "startTime": "19:00",
         "endTime": "20:00",
         "scheduleTimezone": "America/New_York"
@@ -604,6 +604,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
         <li><a href="#river">River Mass</a></li>
         <li><a href="#campus">Campus Mass</a></li>
         <li><a href="#join">Get Involved</a></li>
+        <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
   </div>
@@ -683,7 +684,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
 </section>
 
 <!-- ============ UPCOMING EVENTS ============ -->
-<section class="section section--paper" id="schedule" style="padding-top:0;">
+<section class="section section--paper" id="schedule">
   <div class="wrap">
     <div class="section__head" style="margin-bottom:34px;">
       <span class="eyebrow">Mark Your Calendar</span>
@@ -1477,6 +1478,16 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   </script>
 </section>
 
+<!-- ============ DAILY PRAYER ============ -->
+<section class="prayer" id="prayer">
+  <div class="wrap">
+    <span class="eyebrow">Pray Daily</span>
+    <h2>A Moment of Prayer, Every Day</h2>
+    <p>Begin each day with a short Jesuit prayer and reflection &mdash; the same daily prayer Fr. Betti shares with our students.</p>
+    <a class="cta-btn" href="https://www.jesuitprayer.org" target="_blank" rel="noopener">Pray with JesuitPrayer.org &rarr;</a>
+  </div>
+</section>
+
 <!-- ============ FAQ ============ -->
 <section class="section section--paper" id="faq">
   <div class="wrap">
@@ -1496,7 +1507,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
       </div>
       <div class="faq__item">
         <h3>When is Sunday Mass at Christ the King Chapel?</h3>
-        <p>In summer, Sundays offer a 9:00 AM Outdoor River Mass at RiverFest Park and a 7:00 PM Outdoor Campus Mass on the Canisius University campus. Daily Mass is at 12:05 PM, Monday through Friday.</p>
+        <p>In summer, Sundays offer a 9:00 AM Outdoor River Mass at RiverFest Park and a 7:00 PM Outdoor Campus Mass on the Canisius University campus. Daily Mass is celebrated indoors in the chapel at 12:05 PM, Monday through Friday.</p>
       </div>
       <div class="faq__item">
         <h3>Is Mass open to the public?</h3>
@@ -1533,7 +1544,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
       {
         "@type": "Question",
         "name": "When is Sunday Mass at Christ the King Chapel?",
-        "acceptedAnswer": { "@type": "Answer", "text": "In summer, Sundays offer a 9:00 AM Outdoor River Mass at RiverFest Park and a 7:00 PM Outdoor Campus Mass on the Canisius University campus. Daily Mass is at 12:05 PM, Monday through Friday." }
+        "acceptedAnswer": { "@type": "Answer", "text": "In summer, Sundays offer a 9:00 AM Outdoor River Mass at RiverFest Park and a 7:00 PM Outdoor Campus Mass on the Canisius University campus. Daily Mass is celebrated indoors in the chapel at 12:05 PM, Monday through Friday." }
       },
       {
         "@type": "Question",
@@ -1555,16 +1566,6 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   </script>
 </section>
 
-<!-- ============ DAILY PRAYER ============ -->
-<section class="prayer" id="prayer">
-  <div class="wrap">
-    <span class="eyebrow">Pray Daily</span>
-    <h2>A Moment of Prayer, Every Day</h2>
-    <p>Begin each day with a short Jesuit prayer and reflection &mdash; the same daily prayer Fr. Betti shares with our students.</p>
-    <a class="cta-btn" href="https://www.jesuitprayer.org" target="_blank" rel="noopener">Pray with JesuitPrayer.org &rarr;</a>
-  </div>
-</section>
-
 <!-- ============ FOOTER ============ -->
 <footer class="footer" id="footer">
   <svg class="footer__cross" viewBox="0 0 18 26" aria-hidden="true"><path d="M9 1 V25 M2 8 H16"/></svg>
@@ -1578,6 +1579,7 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
     </a>
   </p>
 
+  <p class="footer__fine"><a href="mailto:bettif@canisius.edu" style="color:inherit;">bettif@canisius.edu</a></p>
   <p class="footer__fine">Christ the King Chapel &bull; Canisius University &bull; Buffalo, New York</p>
   <p class="footer__powered">Powered by <a href="https://helmcode.dev" target="_blank" rel="noopener">Helm</a></p>
 </footer>
