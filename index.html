@@ -954,6 +954,82 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   </div>
 </section>
 
+<!-- ============ WEEKLY SCHEDULE (single-week view) ============ -->
+<section class="section" id="weekly">
+  <div class="wrap">
+    <div class="section__head" style="margin-bottom:34px;">
+      <span class="eyebrow">Every Week</span>
+      <h2 style="text-transform:uppercase; letter-spacing:.1em; font-size:1.9rem;">Weekly Schedule</h2>
+    </div>
+
+    <!-- Tiny reusable icons for the weekly list -->
+    <svg width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true">
+      <symbol id="wk-cross" viewBox="0 0 24 24"><path d="M12 3 V21 M7.5 8 H16.5"/></symbol>
+      <symbol id="wk-confess" viewBox="0 0 24 24"><path d="M4 5 h16 v10 h-9 l-4 4 v-4 H4 Z"/></symbol>
+      <symbol id="wk-adore" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.5 v2 M12 18.5 v2 M3.5 12 h2 M18.5 12 h2 M6.2 6.2 l1.4 1.4 M16.4 16.4 l1.4 1.4 M17.8 6.2 l-1.4 1.4 M6.2 17.8 l1.4 -1.4"/></symbol>
+      <symbol id="wk-oil" viewBox="0 0 24 24"><path d="M12 3.5 C12 3.5 6 11 6 15 a6 6 0 0 0 12 0 C18 11 12 3.5 12 3.5 Z"/></symbol>
+    </svg>
+
+    <div class="weekgrid">
+      <!-- SUNDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Sunday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>River Mass</b><span>9:00 AM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Campus Mass</b><span>7:00 PM</span></div></div>
+      </div>
+
+      <!-- MONDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Monday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- TUESDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Tuesday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- WEDNESDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Wednesday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- THURSDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Thursday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+      </div>
+
+      <!-- FRIDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Friday</p>
+        <div class="weekday__rule"></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-adore"/></svg><div><b>Adoration</b><span>Noon &ndash; 1:00 PM</span></div></div>
+        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-oil"/></svg><div><b>Anointing of the Sick</b><span>After Mass</span></div></div>
+      </div>
+
+      <!-- SATURDAY -->
+      <div class="weekday">
+        <p class="weekday__name">Saturday</p>
+        <div class="weekday__rule"></div>
+        <p class="weekday__none">&mdash;</p>
+      </div>
+    </div>
+
+    <p class="weekly__note"><b>Baptisms</b> by appointment &mdash; please contact Fr. Betti.</p>
+  </div>
+</section>
+
 <!-- ============ SUMMER RIVER MASS ============ -->
 <section class="river" id="river">
   <!-- PHOTO: Outdoor River Mass at Buffalo RiverFest Park — river + grain elevators visible on the left.
@@ -1040,82 +1116,6 @@ section[id], [id="schedule"]{ scroll-margin-top:80px; }
   <div class="river__photo photo"
        style="background-image:url('https://nyc3.digitaloceanspaces.com/helm-project-assets/company-3c6f269f-3302-4d85-a429-c305a4900c06/project-e2466669-1dac-480a-aa05-10714b6f62e2/fc2dff36-d373-41a5-8bb1-bab48aa41796.jpg'); background-position:center;"
        role="img" aria-label="Christ the King Chapel at golden hour — limestone facade, rose window, and the cross with tulips on the Canisius University campus"></div>
-</section>
-
-<!-- ============ WEEKLY SCHEDULE (single-week view) ============ -->
-<section class="section" id="weekly">
-  <div class="wrap">
-    <div class="section__head" style="margin-bottom:34px;">
-      <span class="eyebrow">Every Week</span>
-      <h2 style="text-transform:uppercase; letter-spacing:.1em; font-size:1.9rem;">Weekly Schedule</h2>
-    </div>
-
-    <!-- Tiny reusable icons for the weekly list -->
-    <svg width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true">
-      <symbol id="wk-cross" viewBox="0 0 24 24"><path d="M12 3 V21 M7.5 8 H16.5"/></symbol>
-      <symbol id="wk-confess" viewBox="0 0 24 24"><path d="M4 5 h16 v10 h-9 l-4 4 v-4 H4 Z"/></symbol>
-      <symbol id="wk-adore" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.6"/><path d="M12 3.5 v2 M12 18.5 v2 M3.5 12 h2 M18.5 12 h2 M6.2 6.2 l1.4 1.4 M16.4 16.4 l1.4 1.4 M17.8 6.2 l-1.4 1.4 M6.2 17.8 l1.4 -1.4"/></symbol>
-      <symbol id="wk-oil" viewBox="0 0 24 24"><path d="M12 3.5 C12 3.5 6 11 6 15 a6 6 0 0 0 12 0 C18 11 12 3.5 12 3.5 Z"/></symbol>
-    </svg>
-
-    <div class="weekgrid">
-      <!-- SUNDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Sunday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>River Mass</b><span>9:00 AM</span></div></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Campus Mass</b><span>7:00 PM</span></div></div>
-      </div>
-
-      <!-- MONDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Monday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
-      </div>
-
-      <!-- TUESDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Tuesday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
-      </div>
-
-      <!-- WEDNESDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Wednesday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
-      </div>
-
-      <!-- THURSDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Thursday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
-      </div>
-
-      <!-- FRIDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Friday</p>
-        <div class="weekday__rule"></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-confess"/></svg><div><b>Confessions</b><span>11 AM &ndash; Noon</span></div></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-cross"/></svg><div><b>Daily Mass</b><span>12:05 PM</span></div></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-adore"/></svg><div><b>Adoration</b><span>Noon &ndash; 1:00 PM</span></div></div>
-        <div class="weekday__item"><svg class="wk-ico" viewBox="0 0 24 24" aria-hidden="true"><use href="#wk-oil"/></svg><div><b>Anointing of the Sick</b><span>After Mass</span></div></div>
-      </div>
-
-      <!-- SATURDAY -->
-      <div class="weekday">
-        <p class="weekday__name">Saturday</p>
-        <div class="weekday__rule"></div>
-        <p class="weekday__none">&mdash;</p>
-      </div>
-    </div>
-
-    <p class="weekly__note"><b>Baptisms</b> by appointment &mdash; please contact Fr. Betti.</p>
-  </div>
 </section>
 
 <!-- ============ JOIN OUR MAILING LIST ============ -->
